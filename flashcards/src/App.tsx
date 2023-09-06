@@ -1,20 +1,30 @@
+import { useState } from "react";
+import "./App.css";
+import CardGrid from "./components/CardGrid";
+import Form from "./components/Form";
+import useData from "./hooks/useData";
+import { Category } from "./services/Category-Service";
 
-import './App.css'
-import useData from './hooks/useData'
-
-
+export interface ITest {
+  category: Category;
+}
 
 function App() {
+  const {category} = useData()
+  const [cats, setCats] = useState<ITest>({} as ITest);
+
   
-const {data} = useData()
-
-
 
   return (
     <>
-      
+      <Form/>
+      <CardGrid/>
+      {/* <ul>
+      {data.map(x => <li key={x.question} >{x.question}</li>)}
+      {data.map(x => <li key={x.correct_answer} >{x.correct_answer}</li>)}
+    </ul> */}
     </>
-  )
+  );
 }
 
-export default App
+export default App;
