@@ -3,6 +3,7 @@ import {
   Card,
   CardBody,
   Heading,
+  Text,
 } from "@chakra-ui/react";
 import { MyData } from "../services/card-service";
 import ReactCardFlip from "react-card-flip";
@@ -27,13 +28,15 @@ const Cards = ({ card }: ICard) => {
   return (
     <>
       <ReactCardFlip flipDirection="horizontal" isFlipped={flip}>
-        <Card className="myCard" height="200px" onClick={() => setFlip(!flip)}>
+        <Card className="myCard" height="250px" onClick={() => setFlip(!flip)}>
           <CardBody>
             <Heading fontSize="large">{decodeString(card.question)}</Heading>
+            {card.incorrect_answers.map(x => <Text padding={1} marginTop={1} >{decodeString(x)}</Text>)}
+            <Text padding={1} marginTop={1}>{decodeString(card.correct_answer)}</Text>
           </CardBody>
         </Card>
 
-        <Card className="myCard" bgColor="#38B2AC" height="200px" onClick={() => setFlip(!flip)}>
+        <Card className="myCard" bgColor="#38B2AC" height="225px" onClick={() => setFlip(!flip)}>
           <CardBody>
             <Heading fontSize="large">
               {decodeString(card.correct_answer)}
