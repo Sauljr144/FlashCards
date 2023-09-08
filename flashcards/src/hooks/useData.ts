@@ -1,5 +1,5 @@
 import axios from "axios";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { MyData } from "../services/card-service";
 import { Category } from "../services/Category-Service";
 
@@ -9,8 +9,10 @@ const useData = () => {
 
     const [data, setData] = useState<MyData[]>([])
     const [category, setCategory] = useState<Category[]>([])
-    const [amount, setAmount] = useState(0)
+    const [cat, setCat] = useState('')
     const [error, setError] = useState('')
+    const catRef = useRef<HTMLSelectElement>(null);
+    const amountRef = useRef<HTMLInputElement>(null)
    
     
     
@@ -19,8 +21,8 @@ const useData = () => {
     
         axios.get('https://opentdb.com/api.php?amount=10&category=11',{
             params:{
-                amount: amount,
-                category: category
+                amount: '' ,
+                category: ''
             },
             signal: controller.signal
         })
@@ -51,7 +53,7 @@ const useData = () => {
 
     
 
-   return {data, category};
+   return {data, category, setCategory, cat, setCat, catRef, amountRef};
 
 };
 

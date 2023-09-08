@@ -1,5 +1,6 @@
 import {
   Button,
+  Center,
   FormControl,
   HStack,
   Heading,
@@ -20,31 +21,41 @@ import { Category } from "../services/Category-Service";
 import { useRef } from "react";
 
 const Form = () => {
-  const { category } = useData();
-  const test = useRef<HTMLInputElement>(null)
+  const { category} = useData();
+  const catRef = useRef<HTMLSelectElement>(null);
+  const amountRef = useRef<HTMLInputElement>(null)
+
+  const handleSubmit = (e: any) =>{
+    e.preventDefault();
+
+  }
 
   
-
+  
 
   return (
-    <HStack padding="20px">
-      <Heading>FlashCards</Heading>
-      <FormControl width="30%">
-        <Select placeholder="Select A Category">
+    <HStack padding="20px" justifyContent='center'>
+      <form onSubmit={handleSubmit}>
+      <FormControl>
+        <Select placeholder="Select A Category" ref={catRef}>
           {category.slice(0, 5).map((c) => (
-            <option key={c.id}>{c.name}</option>
+            <option key={c.id} >{c.name}</option>
           ))}
         </Select>
       </FormControl>
-      <FormControl width='30%'>
+      <FormControl >
       <NumberInput max={50} min={10}>
-          <NumberInputField ref={test} placeholder="Number of cards."/>
+          <NumberInputField  placeholder="Number of cards." ref={amountRef} type="number"/>
           <NumberInputStepper>
             <NumberIncrementStepper />
             <NumberDecrementStepper />
           </NumberInputStepper>
         </NumberInput>
       </FormControl>
+      <Center>
+      <Button marginTop={3}>Generate</Button>
+      </Center>
+      </form>
     </HStack>
   );
 };

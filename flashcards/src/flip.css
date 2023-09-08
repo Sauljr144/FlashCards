@@ -1,0 +1,21 @@
+.myCard{
+    transform-style: preserve-3d;
+    transition: 150ms;
+    transform: perspective(1000px) rotateY(var(--rotate-y, 0)) translateY(var(--translate-y, 0));
+}
+
+.myCard:hover{
+    --translate-y:-2px;
+}
+.myCard.flip{
+    --rotate-y: 180deg;
+}
+
+.myCard .front,
+.myCard .back{
+    backface-visibility: hidden;
+}
+
+.myCard .back{
+    transform: rotateY(180deg);
+}
