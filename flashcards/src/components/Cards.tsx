@@ -6,15 +6,18 @@ import {
 } from "@chakra-ui/react";
 import { MyData } from "../services/card-service";
 import ReactCardFlip from "react-card-flip";
-import "../flip.css";
+import "../hover.css";
 
+// interface to get our data with the type of MyData card-service
 interface ICard {
   card: MyData;
 }
 
+// useState to determine if card is flipped. we are using the ReactCardFlip to do the animation
 const Cards = ({ card }: ICard) => {
   const [flip, setFlip] = useState(false);
 
+  // function to get rid of certain characters that appear
   function decodeString(str: string) {
     const textArea = document.createElement("textarea");
     textArea.innerHTML = str;
@@ -24,13 +27,13 @@ const Cards = ({ card }: ICard) => {
   return (
     <>
       <ReactCardFlip flipDirection="horizontal" isFlipped={flip}>
-        <Card height="200px" onClick={() => setFlip(!flip)}>
+        <Card className="myCard" height="200px" onClick={() => setFlip(!flip)}>
           <CardBody>
             <Heading fontSize="large">{decodeString(card.question)}</Heading>
           </CardBody>
         </Card>
 
-        <Card height="200px" onClick={() => setFlip(!flip)}>
+        <Card className="myCard" bgColor="#38B2AC" height="200px" onClick={() => setFlip(!flip)}>
           <CardBody>
             <Heading fontSize="large">
               {decodeString(card.correct_answer)}

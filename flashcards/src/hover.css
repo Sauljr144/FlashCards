@@ -1,0 +1,11 @@
+.myCard{
+   
+    transition: 150ms;
+    transform: translateY(var(--translate-y, 0));
+    backface-visibility: hidden;
+    cursor: pointer;
+}
+
+.myCard:hover{
+    --translate-y:-5px;
+}

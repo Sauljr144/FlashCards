@@ -1,12 +1,10 @@
 import axios from "axios";
 import { useEffect, useRef, useState } from "react";
-import { MyData } from "../services/card-service";
 import { Category } from "../services/Category-Service";
 
 
-
 const useData = () => {
-
+    //useState to set our data with a type of our Category service
     const [category, setCategory] = useState<Category[]>([])
     const [error, setError] = useState('')
    
@@ -27,7 +25,6 @@ const useData = () => {
     }, [])
 
 
-    
 
    return { category, setCategory};
 
