@@ -1,4 +1,5 @@
 .myCard{
+   
     transform-style: preserve-3d;
     transition: 150ms;
     transform: perspective(1000px) rotateY(var(--rotate-y, 0)) translateY(var(--translate-y, 0));
@@ -11,8 +12,13 @@
     --rotate-y: 180deg;
 }
 
+.myCard .front{
+    left: 0;
+}
+
 .myCard .front,
 .myCard .back{
+    position: absolute;
     backface-visibility: hidden;
 }
 
