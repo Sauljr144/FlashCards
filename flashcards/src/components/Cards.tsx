@@ -36,7 +36,7 @@ const Cards = ({ card }: ICard) => {
           </CardBody>
         </Card>
 
-        <Card className="myCard" bgColor="#38B2AC" height="225px" onClick={() => setFlip(!flip)}>
+        <Card className="myCard" bgColor="#38B2AC" height="250px" onClick={() => setFlip(!flip)}>
           <CardBody>
             <Heading fontSize="large">
               {decodeString(card.correct_answer)}
