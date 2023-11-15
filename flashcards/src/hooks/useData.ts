@@ -1,5 +1,5 @@
 import axios from "axios";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import { Category } from "../services/Category-Service";
 
 
@@ -21,6 +21,7 @@ const useData = () => {
         .catch(error => setError(error.message))
 
         return () => controller.abort();
+        console.log(error)
     
     }, [])
 

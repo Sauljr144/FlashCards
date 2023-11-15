@@ -1,5 +1,3 @@
-import React from "react";
-import useData from "../hooks/useData";
 import { Box, SimpleGrid } from "@chakra-ui/react";
 import Cards from "./Cards";
 import { MyData } from "../services/card-service";
